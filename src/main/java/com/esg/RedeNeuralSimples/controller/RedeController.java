@@ -20,18 +20,18 @@ public class RedeController {
     {
         entrada = entrada ==null ? MatrizUtil.GerarMatriz(2, 2) : entrada;
         camada = new Camada(2);
-        entrada.PreencherMatriz(0,0,0.33d);
-        entrada.PreencherMatriz(0,1,0.5d);
+        entrada.preencherMatriz(0,0,0.33d);
+        entrada.preencherMatriz(0,1,0.5d);
 
-        entrada.PreencherMatriz(1,0,0.27d);
-        entrada.PreencherMatriz(1,1,0.15d);
+        entrada.preencherMatriz(1,0,0.27d);
+        entrada.preencherMatriz(1,1,0.15d);
 
-        camada.PreencherValores(0,0.35);
-        camada.PreencherValores(1,0.75);
+        camada.preencherPeso(0,0.35);
+        camada.preencherPeso(1,0.75);
         camada.setBias(0d);
 
         rede = new Rede();
-        rede.IniciarReade(entrada,camada);
+        rede.iniciarReade(entrada,camada);
         System.out.println("IniciarMatriz");
     }
 
@@ -44,7 +44,12 @@ public class RedeController {
     @GetMapping("/matrizteste")
     public String MatrizTeste()
     {
-        rede.TreinarRede();
-        return entrada.ImprimirMatriz();
+        rede.treinarRede();
+        if(rede.getErro() < 0.8)
+        {
+            rede.backPropagation();
+        }
+        return rede.printStatus();
     }
 }
+

@@ -1,30 +1,36 @@
 package com.esg.RedeNeuralSimples.domain;
 
-import java.util.ArrayList;
-
 public class Camada {
 
-    Double arrayLinhaColuna[];
+    private Double arrayLinhaColuna[];
     private Double bias = 0d;
+
+    private String nomeCamada;
+
 
     public Camada() {
 
     }
 
     public Camada(Integer quantidadePesos) {
-        IniciarCamada(quantidadePesos);
+        iniciarCamada(quantidadePesos);
         bias = 0d;
     }
 
-    public void IniciarCamada(Integer quantidadePesos) {
+    public Integer getNumeroValores()
+    {
+        return this.arrayLinhaColuna.length;
+    }
+
+    public void iniciarCamada(Integer quantidadePesos) {
         arrayLinhaColuna = new Double[quantidadePesos];
     }
 
-    public void PreencherValores(Integer posicao, Double valor) {
-        arrayLinhaColuna[posicao] = valor;
+    public void preencherPeso(Integer posicao, Double valorPeso) {
+        arrayLinhaColuna[posicao] = valorPeso;
     }
 
-    public Double getValor(Integer posicao) {
+    public Double getPeso(Integer posicao) {
         return arrayLinhaColuna[posicao];
     }
 
@@ -34,5 +40,13 @@ public class Camada {
 
     public void setBias(Double bias) {
         this.bias = bias;
+    }
+
+    public String getNomeCamada() {
+        return nomeCamada;
+    }
+
+    public void setNomeCamada(String nomeCamada) {
+        this.nomeCamada = nomeCamada;
     }
 }

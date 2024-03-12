@@ -19,7 +19,7 @@ public class Matriz {
         arrayLinhaColuna = new Double[linhas][colunas];
     }
 
-    public void PreencherMatriz(Integer linha, Integer coluna, Double valor)
+    public void preencherMatriz(Integer linha, Integer coluna, Double valor)
     {
         arrayLinhaColuna[linha][coluna]=valor;
     }
